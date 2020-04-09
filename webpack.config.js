@@ -1,7 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
-
+var GhPagesWebpackPlugin = require('gh-pages-webpack-plugin');
 
 module.exports = {
     entry: path.join(__dirname, 'src/index.js'),
@@ -25,6 +25,16 @@ module.exports = {
         }),
         new ScriptExtHtmlWebpackPlugin({
             defaultAttribute: 'defer'
+        }),
+        new GhPagesWebpackPlugin({
+            path: './public',
+            options: {
+                message: 'Update Home Page',
+                user: {
+                    name: '年糕小豆汤',
+                    email: 'ooiss@qq.com'
+                }
+            }
         })
     ],
     devServer: {
